@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>SVD</title>
+    <url>/2025/02/05/SVD/</url>
+    <content><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>SVD(singular value decomposition) is a mathematical method to process matrix. SVD can help extract the key traits of the number in a matrix. Apparently we can use it to process images because images are expressed as matries in computer science. This article is aimed to figure out why and how the SVD can extract the traits of the matrix. Plus I want to give several examples of its application in computere science.  </p>
+<h2 id="SVD"><a href="#SVD" class="headerlink" title="SVD"></a>SVD</h2><h3 id="Start-from-one-way-to-factorize-matrix"><a href="#Start-from-one-way-to-factorize-matrix" class="headerlink" title="Start from one way to factorize matrix"></a>Start from one way to factorize matrix</h3><p>Here is a matrix with $rank=1$:</p>
+<script type="math/tex; mode=display">
+A=\begin{pmatrix}
+  1&2&3 \\
+  1&2&3
+\end{pmatrix}</script><p>It can be written as a column times a row:</p>
+<script type="math/tex; mode=display">
+A=\begin{pmatrix}
+  1&2&3 \\
+  1&2&3
+\end{pmatrix}=\begin{pmatrix}
+  1 \\
+  1
+\end{pmatrix}\begin{pmatrix}
+  1&2&3
+\end{pmatrix}</script><p>We can say the matrix is decomposed as a column times a row and more generally, for any matrix, it can be decomposed as the sum of $column \times row$ with different coefficients. A coefficient decides the weight of the specific $column \times row$ in the whole sum. Here is an example:</p>
+<script type="math/tex; mode=display">
+A=\begin{pmatrix}
+  a&0&0 \\
+  0&b&0
+\end{pmatrix}=a\begin{pmatrix}
+  1 \\
+  0
+\end{pmatrix}\begin{pmatrix}
+  1&0&0
+\end{pmatrix}+b\begin{pmatrix}
+  0 \\
+  1
+\end{pmatrix}\begin{pmatrix}
+  0&1&0
+\end{pmatrix}</script><p>It can be formalised as</p>
+<script type="math/tex; mode=display">
+A=\sigma_1{u_1}v_1^{T}+\sigma_2u_2v_2^{T}</script><p>Here $a$($\sigma_1$) is the weight of the first $column \times row$ on the left and $b$($\sigma_2$) is the only other one. If $a$ is much more larger than $b$, we can neglect the second product to approximate $A$ as only one $column \times row$ with its coefficient. This is useful to store the matrix $A$ with less space.  </p>
+<p>But where is the trait? Let’s get it now:<br>$A$ is by $m\times n$, and suppose it has been decomposed as follow:</p>
+<script type="math/tex; mode=display">
+A=\sigma_1{u_1}v_1^{T}+\sigma_2u_2v_2^{T}+\cdots+\sigma_n u_n v_n^{T} \tag{1}</script><p>where $\sigma_1&gt;\sigma_2&gt;\cdots&gt;\sigma_n$.</p>
+<p>We can take in equation (1) in this way:<br>$\sigma_i$ is the weight, $u_i$ is the trait vector and $v_i^{T}$ is the combination vector who gives a matrix $A_i$ of $m \times n$ by $u_i v_i^{T}$, whose columns are the multiple of $u_i$ with their coefficients in $v_i^{T}$.</p>
+<h3 id="SVD-form"><a href="#SVD-form" class="headerlink" title="SVD form"></a>SVD form</h3><p>In matrix notation and more formalised, the former example could be written</p>
+<script type="math/tex; mode=display">
+A=\begin{pmatrix}
+  a&0&0 \\
+  0&b&0
+\end{pmatrix}=\begin{pmatrix}
+  1&0 \\
+  0&1
+\end{pmatrix}\begin{pmatrix}
+   a&0&0 \\
+  0&b&0
+\end{pmatrix}\begin{pmatrix}
+  1&0&0 \\
+  0&1&0 \\
+  0&0&1
+\end{pmatrix}</script><p>In a general form of $A_{m\times n}$, the SVD wants to write $A$ as</p>
+<script type="math/tex; mode=display">
+A=U\Sigma V^T \tag{2}</script><p>$U<em>{m\times m}$ is called the left singular matrix with left singular vectors as its colomns and $V^{T}</em>{n\times n}$ is the right one. $\Sigma<em>{m\times n}$ has singular values $\sigma_i$ arranged in descending order in position $\Sigma</em>{ii}$  and zeros in other positions.  </p>
+<p>Usually, $U$ and $V$ are orthogonal matrix. Therefore, $V^{-1}=V^{T}$, and multiply $V$ in both side of equation (2) we can get another form of it and it is where equation (2) comes from:</p>
+<script type="math/tex; mode=display">
+AV=U\Sigma \tag{3}</script><p>The idea is the same as that of diagonalising a real and symmetric square matrix with orthogonal matrix:</p>
+<script type="math/tex; mode=display">
+A=Q\Lambda Q^T \Leftrightarrow AQ=Q\Lambda</script><p>where $\Lambda$ is a diagonal matrix with eigen values of $A$ and $Q$ is the orthogonal matrix with corresponding orthonormal eigen vectors.  </p>
+<p>Back to equation (3), rewrite it with specific vectors:</p>
+<script type="math/tex; mode=display">
+A\begin{pmatrix}
+v_1&v_2&\cdots &v_n
+\end{pmatrix}=\begin{pmatrix}
+u_1&u_2&\cdots &u_m
+\end{pmatrix}\begin{pmatrix}
+\sigma_1&0&\cdots &0 \\
+0       &\sigma_2 &\cdots&0\\
+\vdots &\vdots&\cdots&0
+\end{pmatrix}_{m\times n}</script><p>Suppose there are $\sigma_1$ to $\sigma_r$. Then we have</p>
+<script type="math/tex; mode=display">
+Av_i=\sigma_i u_i, i=1,2,\cdots,r \tag{4}</script><p>What we need to do is find these singular values $\sigma_i$ and corresponding sigular vectors $v_i$ and $u_i$, where $u_i$ can be given by $v_i$ and $\sigma_i$ with equation (4).  </p>
+<p>Transpose both sides of equation (2):</p>
+<script type="math/tex; mode=display">
+A^T=V\Sigma^T U^T</script><p>Then multiply with $A$:</p>
+<script type="math/tex; mode=display">
+AA^T=(U\Sigma V^T)(V\Sigma^T U^T)=U(\Sigma\Sigma^T)U^T \tag{5}</script><p>$(\Sigma\Sigma^T)$ is a ${m\times m}$ matrix with $\sigma<em>1^2,\sigma_2^2,\cdots,\sigma_r^2$ and zeros on $(\Sigma\Sigma^T)</em>{ii}$ and zero otherwise. Therefore, $\sigma_i^2(i=1,2,…,r)$ are eigenvalues of $AA^T$, with $u_i$ being their corresponding eigenvectors.<br>Similarly, we can also get $\sigma_i^2(i=1,2,…,r)$ are eigenvalues of $A^TA$, with $v_i$ being their corresponding eigenvectors.</p>
+<ul>
+<li>Conclusion:<br>Now let’s summarize the whole process of SVD.<br>Our aim is to write $A$ as $U\Sigma V^T$</li>
+</ul>
+<h2 id="SVD-application——PCA"><a href="#SVD-application——PCA" class="headerlink" title="SVD application——PCA"></a>SVD application——PCA</h2><p>PCA(principal component analysis) is a <strong>dimensionality reduction</strong> technique used in statistics and machine learning. It transforms a dataset with many correlated variables into a smaller set of uncorrelated variables called principal components, while preserving as much <strong>variance</strong> as possible.<br>SVD is an effective way to implement PCA.</p>
+<h3 id="A-visulized-example"><a href="#A-visulized-example" class="headerlink" title="A visulized example"></a>A visulized example</h3><p>Take $A_{m\times n}$ in this way: A set of $n$ <strong>samples</strong> with $m$ variables of <strong>measurement</strong>.<br>Here is an example from reference[1] listed last.  </p>
+<p>Suppose we have $n$ different points in a 2-D plane and we want to find out the principal direction of these points, namely a line that will be as close as possible to the points.  </p>
+<p>First, we center each of the measurement: $x,y$ in this example. Substract $\bar{x}$ and $\bar{y}$ for each $x<em>i$ and $y_i$. We can get a matrix $A</em>{2\times n}$ with each of its row having average of $0$.</p>
+<p>We can draw these centered points in a coordinate. The center of these points is the origin. It helps a lot when we try to find the direction formed by these points.</p>
+<p><img src="\img\post\math\dian.png" alt=dian title="Data points in A are often close to a line in $R^2$ or a subspace in $R^m$"></p>
+<p>Now consider doing SVD on $A$:</p>
+<script type="math/tex; mode=display">
+A=U\Sigma V^T=\begin{pmatrix}
+u_1&u_2
+\end{pmatrix}\Sigma \begin{pmatrix}
+v_1&v_2&\cdots&v_n
+\end{pmatrix}^T</script><p>The leading sigular vector with bigger sigular value shows the direction in the former scatter graph for the reasons we talk about above.  </p>
+<h4 id="Least-perpendicular-squares"><a href="#Least-perpendicular-squares" class="headerlink" title="Least perpendicular squares"></a>Least perpendicular squares</h4><p>Also this direction is the direction with <strong>least perpendicular squares</strong>.</p>
+<blockquote>
+<p>Namely, the sum of squared distances from the points to the line is a minimum.  </p>
+</blockquote>
+<p>Proof: Consider a triangle formed by the origin, the line and the point $a_i$(a vector with$(x_i,y_i)$).<br>Using Pythagorean theorem:</p>
+<script type="math/tex; mode=display">
+||a_i||^2=|a_i^Tu_1|^2+|a_i^Tu_2|^2</script><p>The first term on the right is the projection of $a_i$ on the direction of $u_1$(unit vector), namely the principal direction and the second term is the distance square we want. Sum all the distance squares:</p>
+<script type="math/tex; mode=display">
+d_{sum}=\sum_{i=1}^{n}|a_i^Tu_2|^2=\sum_{i=1}^{n}||a_i||^2-\sum_{i=1}^{n}|a_i^Tu_1|^2</script><p>The first term on the right is a constant for given points and the second term can be written as</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{n}|a_i^Tu_1|^2=\begin{pmatrix}
+a_1^Tu_1&a_2^Tu_1\cdots&a_n^Tu_1
+\end{pmatrix}\begin{pmatrix}
+a_1^Tu_1\\
+a_2^Tu_1\\
+\vdots\\
+a_n^Tu_1
+\end{pmatrix}=u_1^TAA^Tu_1</script><p>Minimise $d_{sum}$ means maximise $u_1^TAA^Tu_1$. Of course it arrives it maximum when $u_1$ is the singular vector for the maximum singular value. This cooresponds with the PCA by SVD.</p>
+<h3 id="The-general-form"><a href="#The-general-form" class="headerlink" title="The general form"></a>The general form</h3><h3 id="Application-in-computer-science"><a href="#Application-in-computer-science" class="headerlink" title="Application in computer science"></a>Application in computer science</h3><h3 id="Face-recognition"><a href="#Face-recognition" class="headerlink" title="Face recognition"></a>Face recognition</h3><h2 id="SVD——from-the-operator-perspective"><a href="#SVD——from-the-operator-perspective" class="headerlink" title="SVD——from the operator perspective"></a>SVD——from the operator perspective</h2><h3 id="Polar-decomposition"><a href="#Polar-decomposition" class="headerlink" title="Polar decomposition"></a>Polar decomposition</h3><p>$A=U\Sigma V^T=(UV^T) (V\Sigma V^T)=QS$</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>[1] Chapter 7 <strong><em>Introduction to linear algebra 5th</em></strong> by Gilbert Strang  </li>
+<li>[2] <a href="https://en.wikipedia.org/wiki/Eigenface">Eigenface Wiki</a></li>
+<li>[3] Chapter 7 <strong><em>Linear algebra done right 4th</em></strong> by Sheldon Axler</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Maths</category>
+      </categories>
+      <tags>
+        <tag>linear algebra</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>homepage</title>
+    <url>/2025/01/24/homepage/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>quadratic probing</title>
+    <url>/2025/01/27/quadratic-probing/</url>
+    <content><![CDATA[<h2 id="散列表——平方探测——二次剩余"><a href="#散列表——平方探测——二次剩余" class="headerlink" title="散列表——平方探测——二次剩余"></a>散列表——平方探测——二次剩余</h2><h3 id="散列表的平方探测"><a href="#散列表的平方探测" class="headerlink" title="散列表的平方探测"></a>散列表的平方探测</h3><p>我们先回顾一下散列表（Hash Table）的平方探测（Quadratic Probing）：</p>
+<blockquote>
+<p>平方探测 是一种用于解决哈希冲突的方法。哈希冲突发生在两个或多个不同的键通过哈希函数映射到同一个索引位置时。平方探测通过改变冲突位置的探测方式，来减少冲突并均匀分布键值。<br>计算公式为 $探测位置=(初始哈希位置+i^2)\%表长$</p>
+</blockquote>
+<p>再来看看《数据结构与算法分析——C语言描述（Mark Allen Weiss 第二版 机械工业出版社）》119页定理5.1的证明，这是一个有关平方探测的重要结论，这里的证明似乎不是很完整。</p>
+<blockquote>
+<p>定理5.1：如果使用平方探测，且表的大小是素数，那么当表至少有一半是空的时候，总能够插入一个新的元素。</p>
+</blockquote>
+<p><img src="\img\post\data-structure\image.png" title="定理5.1：一个平方探测的结论"></p>
+<p>证明的倒数第二行</p>
+<blockquote>
+<p>“因此任何元素都有 $\lfloor TableSize/2\rfloor$ 个可能被放到的位置。”</p>
+</blockquote>
+<p>这句话乍一看并不显然，因为定理先证明了前 $\lfloor TableSize/2\rfloor$ 个备选位置是互异的，但是并没有说明后面的 $\lfloor TableSize/2\rfloor$ 是什么情况。有可能后面可能的情况与前面不同，导致任何元素都有 $TableSize$ 个可能的位置。那按书中的说法，应该在此句的 $\lfloor TableSize/2\rfloor$ 前加“至少”。<br>但是我们下面会证明，书中的说法是对的，即只有 $\lfloor TableSize/2\rfloor$ 种可能的结果。也就是说，后面一半的备选位置和前面一半是相同的。</p>
+<p>平方探测是在计算冲突元素在发生第 $i$ 次冲突将被放到的新位置：<br> $F(x,i) = x \%p+i^2 $，假设 $p为hash table 的大小，为奇素数，hash(x)=x\%p$ ,<br> 那么更确切地，$F(x,i) = (x \%p+i^2)\%p=(x\%p+i^2\%p)\%p$<br>这是因为$(a+b)\%p=(a\%p+b\%p)\%p $.</p>
+<p>上面 $F(x,i)$的结果在 $x$ 固定的情况下只取决于 $i$，即冲突发生的次数。所以只考虑 $i^2\%p$ 在 $i$ 取遍正整数时所有的可能结果即可。结果不会超过$p$个（因为模 $p$ 的同余类只有$p$种）。</p>
+<p>实际上，$i^2\%p$ 在 $i$ 取遍正整数时所有的可能结果就是模 $p$ 的所有二次剩余，结果的个数就是二次剩余的个数加一，下面将会证明模 $p$ 的二次剩余个数为 $\frac{p-1}{2}$。</p>
+<h3 id="二次剩余的定义"><a href="#二次剩余的定义" class="headerlink" title="二次剩余的定义"></a>二次剩余的定义</h3><p>二次剩余的定义如下：</p>
+<blockquote>
+<p>一个正整数$a$称为模$p$的二次剩余，如果存在某个整数$i$使得$i^2\equiv a \pmod{p}$ 成立，否则称为模$p$的二次非剩余。</p>
+</blockquote>
+<p>我们使用如下记号：勒让德符号（Legendre）来表示二次剩余关系</p>
+<script type="math/tex; mode=display">
+(\frac{a}{p})=
+\begin{cases}
+1, & a \text{是} p \text{的二次剩余}\\
+-1, & a \text{是} p \text{的二次非剩余}\\
+0, & p|a
+\end{cases}</script><h3 id="二次剩余的个数"><a href="#二次剩余的个数" class="headerlink" title="二次剩余的个数"></a>二次剩余的个数</h3><p>现在我们来求解模 $p$的二次剩余的个数，即 $i^2\equiv a \pmod{p}$在 $i$ 取遍正整数时，正整数 $a$的个数。</p>
+<p>先考虑 $i$ 的取值，显然只要从1取到p即可，若$i&gt;p，$则 $\exists q\in Z, i=qp+r, 0&lt;r&lt;p$ 此时 $i^2\%p=r^2\%p$，仍只需考虑小于p的情况即可。</p>
+<p>设 $1\leq x &lt; y \leq p$,且$x^2\%p\equiv y^2\%p$.<br>故有 $p|(x^2-y^2)$ ，即 $p|(x+y)(x-y)$<br>由$x,y$的取值范围可知 $p|(x+y)$，进一步地， $x+y=p$。</p>
+<p>于是我们得到了这样的关系：当两个数和为模数的时候，它们的平方模除这个模数结果相同。因此，对于 $(1,p-1),(2,p-2),···$ 这 $\frac{p-1}{2}$ 个数对（别忘了p为奇素数），处于同一数对中的数，它们的平方模除$p$的结果相同，不同数对中的元素模除$p$结果不同，共有 $\frac{p-1}{2}$ 个结果。</p>
+<p>因此二次剩余的个数就是 $\frac{p-1}{2}$。</p>
+<h3 id="二次剩余的检验"><a href="#二次剩余的检验" class="headerlink" title="二次剩余的检验"></a>二次剩余的检验</h3><p>有时候，我们已知 $i^2\equiv a \pmod{p}$ 式中的$a, p$要去求满足条件的 $i$（这就是求解二次剩余方程）。但是这样的$i$并不一定存在（这种情况就称a是模p的二次非剩余）。</p>
+<p>当然也有很多情况，我们不知道模除 $p$ 的二次剩余是什么，这时候 $i$ 就更不知道了，不过我们现在已经知道了二次剩余的个数，所以只需从1到 $\frac{p-1}{2}$ 之间一个一个检验就行。那么如何检验一个数它是不是模除p的二次剩余呢？欧拉告诉我们有<strong>欧拉准则（Euler Criterion）</strong>：</p>
+<script type="math/tex; mode=display">
+(\frac{a}{p})\equiv a^{\frac{p-1}{2}}\pmod{p}=
+\begin{cases}
+1 \pmod{p} & \text{如果 } a \text{ 是模 } p \text{ 的二次剩余} \\
+-1 \pmod{p} & \text{如果 } a \text{ 不是模 } p \text{ 的二次剩余}
+\end{cases}</script><p>所以回到我们的问题上来，冲突时发生时，利用平方探测 $hashtable$ 中所有备选的位置，就是模  $TableSize$ 的二次剩余 ($i^2\%p$)  加上一个 $x\%p$ 再模除 $p$，但是我们只用考虑个数，它有 $\lfloor TableSize/ 2\rfloor$ 个。<br>于是，再看定理5.1，表至少一半空时，二次剩余至少有两个，所以一定有空的备选位置，故一定可以放下一个新元素。</p>
+<h3 id="散列平方探测插入失败问题"><a href="#散列平方探测插入失败问题" class="headerlink" title="散列平方探测插入失败问题"></a>散列平方探测插入失败问题</h3><p>最后来看一个判断题，正是这篇文章的缘起。</p>
+<blockquote>
+<p>If 7 elements have been stored in a hash table of size 13 at positions { 0, 1, 2, 4, 5, 10, 11 }, and the<br>hash function is H(x) = x%13. Then an empty spot can’t be found when inserting the element 40<br>with quadratic probing.</p>
+</blockquote>
+<p>答案是✔<br>一般的解法是不断用 $(40+i^2) mod{13}(i=0,1,2, \cdots)$ 求得新的插入位置，计算后发现结果是 $1, 2, 5, 10, 4, 0, 11, 11, 0, 4, 10, 5, 2$<br>这13个数循环，全是题中已插入的位置，所以40不能成功插入。</p>
+<p>现在我们可以利用上面对二次剩余的讨论对这个循环给出解释。<br>先转换一下插入位置表达式：<br>$(40+i^2) mod{13}=(40 mod{13}+i^2 mod{13})mod{13}=(1+i^2 mod{13})mod{13},(i=0,1,2, \cdots)$，<br>这个结果可能的取值个数（也就是可插入位置个数），取决于 $i^2mod{13}的值的个数 $。</p>
+<p>首先，可以确定模除13的二次剩余的个数：$\frac{p-1}{2}=\frac{13-1}{2}=6$。<br>在这道题里，模数的结果可以为0，故在散列中有 $6+1=7$ 个可插入位置。接着我们就仅需判断所给的positions是否为这7个可插入位置。（实际上得到的循环已经证实了确实是这7个）</p>
+<p>现在可以使用上面的<strong>欧拉准则</strong>，将所给的position标号减去1后求6次方然后模除13，看看结果是不是1（此时即为模13的二次剩余）或者0。<br>注意：0减去1结果取12，因为 $1+12=13\equiv0 mod{13}$</p>
+<p>下面是验证的Python代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">positions=[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">11</span>]</span><br><span class="line">res=[<span class="number">0</span>,<span class="number">1</span>]</span><br><span class="line">p=<span class="number">13</span></span><br><span class="line"><span class="keyword">for</span> position <span class="keyword">in</span> positions:</span><br><span class="line">    <span class="keyword">if</span> position==<span class="number">0</span>:</span><br><span class="line">        position=<span class="number">13</span></span><br><span class="line">    <span class="keyword">if</span> (position-<span class="number">1</span>)**((p-<span class="number">1</span>)/<span class="number">2</span>)%<span class="number">13</span> <span class="keyword">in</span> res:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;position <span class="subst">&#123;position%<span class="number">13</span>&#125;</span> is not insertable&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Data structure</category>
+      </categories>
+      <tags>
+        <tag>data structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/01/24/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<p><img src="/img/scene/Fr_Alexandre3.jpg" title="beautiful scene"></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><img src="/img/scene/Fr_Alexandre3.jpg" title="beautiful scene" class="no-lightbox"></p>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <tags>
+        <tag>homepage</tag>
+      </tags>
+  </entry>
+</search>
