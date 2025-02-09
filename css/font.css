@@ -1,0 +1,20 @@
+@font-face{
+    font-family: 'HarmonyOS Sans SC';
+    font-display: swap;
+    src: url('../font/HarmonyOS_Sans_SC_Regular.ttf') format("truetype"),
+         url('../font/HarmonyOS_Sans_Regular.ttf');
+}
+@font-face{
+    font-family: 'HarmonyOS Sans';
+    font-display: swap;
+    src: url('../font/HarmonyOS_Sans_Regular.ttf');
+}
+@font-face{
+    font-family: 'JetBrains Mono';
+    font-display: swap;
+    src: url('../font/JetBrainsMonoNL-Regular.ttf') format("truetype"),
+         url('../font/JetBrainsMono-Regular.woff2') format("truetype");
+}
+body {
+    font-family: 'HarmonyOS Sans','JetBrains Mono','HarmonyOS Sans SC';
+}
