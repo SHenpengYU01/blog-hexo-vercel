@@ -243,7 +243,7 @@ l0,-1944c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>quadratic probing</title>
+    <title>Quadratic probing</title>
     <url>/2025/01/27/quadratic-probing/</url>
     <content><![CDATA[<h2 id="散列表——平方探测——二次剩余">散列表——平方探测——二次剩余</h2>
 <h3 id="散列表的平方探测">散列表的平方探测</h3>
