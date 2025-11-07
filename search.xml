@@ -329,4 +329,139 @@ l0,-1944c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
         <tag>linear algebra</tag>
       </tags>
   </entry>
+  <entry>
+    <title>NLive开发日志（一）</title>
+    <url>/2025/04/13/NLive1/</url>
+    <content><![CDATA[<h2 id="介绍">介绍</h2>
+<p>SRTP项目实现基于HarmonyOS NEXT系统的直播应用NLive（个人暂定），项目开发共三人。这里是开发的记录日志。</p>
+<h2 id="目标">目标</h2>
+<ul>
+<li>[ ]实现主播开播，用户看播</li>
+<li>[ ]一个简洁优雅的UI界面</li>
+<li>[ ]更低的流量消耗</li>
+</ul>
+]]></content>
+      <categories>
+        <category>NLive</category>
+      </categories>
+      <tags>
+        <tag>NLive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript 学习记录</title>
+    <url>/2025/04/13/js-learn/</url>
+    <content><![CDATA[<h2 id="缘起">缘起</h2>
+<p>SRTP项目要实现基于HarmonyOS NEXT系统的直播应用，需要使用ArkTS，由于ArkTS基于TS，TS基于JS，我想从JS学起会更加顺利，而且JS的应用会更广泛，在对比中学习应该会更快而且更容易看清它们各自的特性。此部分独立于NLive（直播应用名称，个人暂定）的开发记录。</p>
+<p>这里仅记录学习JS过程中的进度，参考的文献，以及遇到的问题和解决办法等可以容易说明且直观的内容。<br>
+具体JS知识的相关笔记在<a href="https://note.mythlogos.top/">这里</a>。</p>
+<h2 id="目标">目标</h2>
+<p>理解JS语言特性且能应用，初步目标：理解博客内使用的相关JS，实现有角度滚动图片瀑布流。</p>
+<h2 id="学习网站">学习网站</h2>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/What_is_JavaScript">MDN Web Docs</a></p>
+<h2 id="进度">进度</h2>
+<ul>
+<li>[ ] MDN Web Docs</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>KMP字符串匹配算法</title>
+    <url>/2025/10/06/KMP/</url>
+    <content><![CDATA[<h2 id="简介">简介</h2>
+<p>我们想要在一个字符串S中找到一个子串P（称为模式串），如果找到就返回该匹配串在S中起始位置。此时可以使用KMP算法（字母为三个提出者的姓名首字母）<br>
+传统的回溯法可能是这样的：在逐位检查匹配字符串P和S的过程中，如果发现当前字符S[i]与P[i]不匹配，那么从P[i-1]开始向前找S[i]，如果找到了P[j]==S[i]，那么从P[j]和S[i]向前遍历两字符串观察对应字符是否相等；否则就从P[0]开始重新和S[i]匹配。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n=S.length</span><br><span class="line">m=P.length</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(j):</span><br><span class="line">        <span class="keyword">if</span> S[i] != P[j]:</span><br><span class="line">            k=j-<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span>():</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(j):</span><br><span class="line">                <span class="keyword">if</span> S[i] == P[j-k]:</span><br><span class="line">                    l=i-<span class="number">1</span></span><br><span class="line">                    o=j-k-<span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span>(l &gt;= <span class="number">0</span> <span class="keyword">and</span> o &gt;= <span class="number">0</span> <span class="keyword">and</span> S[l] == P[o]):</span><br><span class="line">                        l-=<span class="number">1</span></span><br><span class="line">                        o-=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> o &lt; <span class="number">0</span>:</span><br><span class="line">                    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="流程和实现">流程和实现</h2>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>string algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Javascript 学习记录</title>
+    <url>/2025/11/05/wsl-network/</url>
+    <content><![CDATA[<h2 id="WSL的网络配置">WSL的网络配置</h2>
+<p>参考的官方文档：<a href="https://learn.microsoft.com/zh-cn/windows/wsl/networking">使用WSL访问网络应用程序</a></p>
+<p>按下<code>Win</code>键搜索<code>WSL Settings</code>，可以发现其中的网络模式有：</p>
+<ul>
+<li>Nat: 默认的网络地址转换模式，WSL IP地址与Windows主机地址相互隔离</li>
+<li>Mirrored: 镜像模式。开启后WSL和Windows共享网络配置，包括IP地址、系统代理（梯子）</li>
+<li>VirtioProxy:</li>
+</ul>
+<p>我的目标是使用移动设备（手机）通过IP+端口访问WSL上开启的网络服务。但是在<code>Mirrored</code>模式下没有成功。</p>
+<p>!!! note “如何开启镜像模式（Mirrored）”<br>
+资源管理器中搜<code>%UserProfile%</code>，在该文件夹下创建<code>.wslconfig</code>，添加如下内容：</p>
+<pre><code><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">networkingMode=mirrored</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>下面先考虑Windows与WSL在<code>Mirrored</code>模式下的通信。</p>
+<h2 id="镜像模式下Windows与WSL-进行http-通信">镜像模式下Windows与WSL 进行http 通信</h2>
+<h3 id="Windows作为服务端">Windows作为服务端</h3>
+<ul>
+<li>在当前文件加下建立简单的网页：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>WSL 镜像模式测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>🎉 成功从手机访问 WSL！<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这证明镜像模式工作正常<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>WSL IP: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;ip&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>访问时间: <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;time&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;ip&#x27;</span>).<span class="property">textContent</span> = location.<span class="property">hostname</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;time&#x27;</span>).<span class="property">textContent</span> = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">toLocaleString</span>();</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在当前目录下运行下面的python程序：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> http.server</span><br><span class="line"><span class="keyword">import</span> socketserver</span><br><span class="line"></span><br><span class="line">PORT = <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Handler</span>(http.server.SimpleHTTPRequestHandler):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">log_message</span>(<span class="params">self, <span class="built_in">format</span>, *args</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;self.client_address[<span class="number">0</span>]&#125;</span> - <span class="subst">&#123;<span class="built_in">format</span> % args&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> socketserver.TCPServer((<span class="string">&quot;&quot;</span>, PORT), Handler) <span class="keyword">as</span> httpd:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;🚀 服务器运行在端口 <span class="subst">&#123;PORT&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;🌐 尝试通过以下地址访问:&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;   http://localhost:8080&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;   http://127.0.0.1:8080&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;   http://192.168.43.4:8080&quot;</span>)</span><br><span class="line">    httpd.serve_forever()</span><br></pre></td></tr></table></figure>
+<p>其中<code>192.168.43.4</code>应替换为Windows的IP地址（可通过<code>ipconfig /all</code>查看），WSL 开启了镜像模式，则它也是WSL的IP地址，那么我们能否在WSL中通过访问该IP地址来访问Windows上开启的服务呢？</p>
+<p>在WSL中尝试通过<code>curl</code>来依次访问python代码中列出的地址，发现最后一个访问失败，不能通过IP地址访问Windows上服务。</p>
+<h3 id="WSL做服务器">WSL做服务器</h3>
+<p>同样，让WSL运行上面python程序，在Windows上通过<code>curl</code>命令或浏览器访问上述地址，发现也是只有最后一个访问失败。</p>
+<hr>
+<h2 id="NAT模式下Windows与WSL进行通信">NAT模式下Windows与WSL进行通信</h2>
+<p>阅读官方的<a href="https://learn.microsoft.com/zh-cn/windows/wsl/networking">使用WSL访问网络应用程序</a>教程可知，NAT模式下WSL地址与Windows主机地址隔离，可通过如下方式获取WSL的IP地址：</p>
+<ul>
+<li>
+<p>Windows：</p>
+<ol>
+<li><code>wsl.exe --distribution &lt;DistroName&gt; hostname -i</code><br>
+但是我运行该命令得到的是<code>127.0.1.1</code>，WSL中运行<code>cat /etc/hosts</code>可得到解释，结果中有<code>127.0.1.1 LAPTOP-EUO3BP5M.localdomain LAPTOP-EUO3BP5M</code></li>
+<li><code>wsl hostname -I</code>可以得到WSL的IP地址：<code>172.20.84.77</code></li>
+</ol>
+</li>
+<li>
+<p>WSL:</p>
+<ol>
+<li><code>ip route show | grep -i default | awk '&#123; print $3&#125;'</code></li>
+<li><code>ifconfig</code></li>
+</ol>
+</li>
+</ul>
+<h3 id="Windows作为服务器">Windows作为服务器</h3>
+<p>WSL可通过<code>http://&lt;Windows-IP&gt;:port</code>访问Windows上的服务</p>
+<h3 id="WSL作为服务端">WSL作为服务端</h3>
+<h4 id="Windows访问">Windows访问</h4>
+<p>Windows可通过<code>http://localhost:8080</code>和<code>http://172.20.84.77:8080</code>访问WSL上的服务</p>
+<h4 id="移动设备访问">移动设备访问</h4>
+<p>在WSL的NAT模式下，如果手机想访问WSL上的网络服务，需要使用 Netsh 接口 portproxy 这个 Windows 命令添加一个端口代理：让手机访问Windows的端口，转发到WSL的服务</p>
+<p><code>netsh interface portproxy add v4tov4 listenport=&lt;yourPortToForward&gt; listenaddress=0.0.0.0 connectport=&lt;yourPortToConnectToInWSL&gt; connectaddress=(wsl hostname -I)</code></p>
+<p>在我的例子中就是：</p>
+<p><code>netsh interface portproxy add v4tov4 listenport=8080 listenaddress=0.0.0.0 connectport=8080 connectaddress=172.20.84.77</code>.</p>
+<p>之后可能需要添加防火墙规则：<code>Win+R</code>输入<code>control panel</code>-&gt;系统和安全-&gt;防火墙-&gt;高级设置-&gt;入站规则-&gt;新建端口规则</p>
+<img src="\img\post\network\defender-rule.png" alt=defender-fule title="添加防火墙规则">
+]]></content>
+      <categories>
+        <category>WSL</category>
+      </categories>
+      <tags>
+        <tag>WSL Network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/05/06/note-meaning/</url>
+    <content><![CDATA[<h1></h1>
+]]></content>
+  </entry>
 </search>
