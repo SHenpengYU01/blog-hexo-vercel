@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/posts/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start">Quick Start</h2>
+<h3 id="Create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<img src="/img/scene/Fr_Alexandre3.jpg" title="beautiful scene">
+<h3 id="Run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<img src="/img/scene/Fr_Alexandre3.jpg" title="beautiful scene" class="no-lightbox">
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <tags>
+        <tag>homepage</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>KMP字符串匹配算法</title>
-    <url>/2025/10/06/KMP/</url>
+    <url>/posts/algorithm/KMP/</url>
     <content><![CDATA[<h2 id="简介">简介</h2>
 <p>我们想要在一个字符串S中找到一个子串P（称为模式串），如果找到就返回该匹配串在S中起始位置。此时可以使用KMP算法（字母为三个提出者的姓名首字母）<br>
 传统的回溯法可能是这样的：在逐位检查匹配字符串P和S的过程中，如果发现当前字符S[i]与P[i]不匹配，那么从P[i-1]开始向前找S[i]，如果找到了P[j]==S[i]，那么从P[j]和S[i]向前遍历两字符串观察对应字符是否相等；否则就从P[0]开始重新和S[i]匹配。</p>
@@ -17,10 +41,280 @@
       </tags>
   </entry>
   <entry>
-    <title>NLive开发日志（一）</title>
-    <url>/2025/04/13/NLive1/</url>
+    <title>Javascript 学习记录</title>
+    <url>/posts/live/js-learn/</url>
+    <content><![CDATA[<h2 id="缘起">缘起</h2>
+<p>SRTP项目要实现基于HarmonyOS NEXT系统的直播应用，需要使用ArkTS，由于ArkTS基于TS，TS基于JS，我想从JS学起会更加顺利，而且JS的应用会更广泛，在对比中学习应该会更快而且更容易看清它们各自的特性。此部分独立于NLive（直播应用名称，个人暂定）的开发记录。</p>
+<p>这里仅记录学习JS过程中的进度，参考的文献，以及遇到的问题和解决办法等可以容易说明且直观的内容。<br>
+具体JS知识的相关笔记在<a href="https://note.mythlogos.top/">这里</a>。</p>
+<h2 id="目标">目标</h2>
+<p>理解JS语言特性且能应用，初步目标：理解博客内使用的相关JS，实现有角度滚动图片瀑布流。</p>
+<h2 id="学习网站">学习网站</h2>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/What_is_JavaScript">MDN Web Docs</a></p>
+<h2 id="进度">进度</h2>
+<ul>
+<li>[ ] MDN Web Docs</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>鸿蒙5开发学习</title>
+    <url>/posts/live/doc-read/</url>
+    <content><![CDATA[<h2 id="ArkTS">ArkTS</h2>
+<ul>
+<li>ArkTS HAP应用构建过程：</li>
+</ul>
+<img src="\img\post\live\build-process.png" alt="build-process" title="应用构建过程">
+<ul>
+<li>应用发布过程：</li>
+</ul>
+<img src="\img\post\live\hap-publish.png" alt="hap-publish" title="应用发布过程">
+<h2 id="NDK-（7-15）">NDK （7.15）</h2>
+<p><a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-project-structure#section181711599584">Native C++工程目录</a></p>
+<ul>
+<li>cpp/types：存放C++接口描述文件</li>
+<li>cpp/napi_init：定义C++ API接口的文件</li>
+</ul>
+<h3 id="Node-API">Node-API</h3>
+<p><a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/napi-introduction">Node-API简介</a></p>
+<ul>
+<li>Node-API（ArkTS和C++间）交互流程：</li>
+</ul>
+<img src="\img\post\live\node-api.png" alt="node-api.png" title="Node-API交互">
+<ol>
+<li><strong>初始化阶段</strong>：当ArkTS侧在import一个Native模块时，ArkTS引擎会调用ModuleManager加载模块对应的so及其依赖。首次加载时会触发模块的注册，将模块定义的方法属性挂载到exports对象上并返回该对象。</li>
+<li><strong>调用阶段</strong>：当ArkTS侧通过上述import返回的对象调用方法时，ArkTS引擎会找到并调用对应的C/C++方法。</li>
+</ol>
+<h2 id="Web">Web</h2>
+<p><a href="https://support.huaweicloud.com/intl/zh-cn/live/index.html">华为云视频直播服务</a></p>
+<h2 id="cmakelist">cmakelist</h2>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#声明一个产物libentry.so，SHARED表示产物为动态库，hello.cpp为产物的源代码</span><br><span class="line">add_library(entry SHARED hello.cpp)</span><br></pre></td></tr></table></figure>
+<p>CMake 会根据目标平台的约定自动添加前缀和后缀。</p>
+<ul>
+<li>Unix 系统，CMake 会自动在库名前添加 lib，并在库名后添加 .so。</li>
+<li>Windows系统，共享库的文件名通常以 .dll 结尾</li>
+</ul>
+]]></content>
+      <categories>
+        <category>鸿蒙live开发</category>
+      </categories>
+      <tags>
+        <tag>实习</tag>
+        <tag>鸿蒙5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AVCodecVideo项目学习</title>
+    <url>/posts/live/avcodec-video/</url>
+    <content><![CDATA[<ul>
+<li>本篇记录鸿蒙用于音视频编解码的原生AVCodec Kit学习过程</li>
+<li>AVCodec编解码模块官网：<a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/avcodec-kit-intro">AVCodec Kit简介</a></li>
+<li>示例代码仓：<a href="https://gitee.com/harmonyos_samples/AVCodecVideo">AVCodecVideo</a></li>
+</ul>
+<h2 id="编码过程分析">编码过程分析</h2>
+<p>TS层：Index页面在用户点击录制-&gt;同意保存按钮后调用initNative获取SurfaceId，并带SurfaceId路由到Recorder页面</p>
+<h3 id="Init">Init</h3>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[&quot;initNative&quot;] --- B[&quot;RecorderNative::Init&quot;]</span><br><span class="line">    B --- C[&quot;napi_create_async_work&quot;]</span><br><span class="line">    C ---|napi_async_execute_callback| C1[&quot;NativeInit&quot;]</span><br><span class="line">    C ---|napi_async_complete_callback| C2[&quot;DealCallBack&quot;]</span><br><span class="line">    C1 --- D1[&quot;Recorder.Init&quot;]</span><br><span class="line">    C1 --- D2[&quot;OH_NativeWindow_GetSurfaceId&quot;]</span><br><span class="line">    D1 --- E1[&quot;Muxer&quot;]</span><br><span class="line">    E1 --- E11[&quot;Muxer.Create&quot;]</span><br><span class="line">    E1 --- |配置AVFormat| E12[&quot;Muxer.Config&quot;]</span><br><span class="line">    D1 --- E2[&quot;Audio&quot;]</span><br><span class="line">    E2 --- E21[&quot;CreateAudioEncoder&quot;]</span><br><span class="line">    E2 --- E22[&quot;AudioCapturerInit&quot;]</span><br><span class="line">    D1 --- E3[&quot;Video&quot;]</span><br><span class="line">    E3 --- E31[&quot;CreateVideoEncoder&quot;]</span><br><span class="line">    E11 ---|传入output file描述和格式| E111[&quot;OH_AVMuxer_Create&quot;]</span><br><span class="line">    E21 --- |最终调用| E211[&quot;OH_AudioCodec_CreateByMime&quot;]</span><br><span class="line">    E21 --- |新增| E212[CreateAudioBufferQueue]</span><br><span class="line">    E31 ---|最终调用| E311[OH_VideoEncoder_CreateByMime]</span><br><span class="line">    E31 --- |新增| E312[CreateVideoBufferQueue]</span><br><span class="line"></span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line">classDef newfunc fill:#E3F2FD,stroke:#2196F3,stroke-width:2px;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class D2,E111,E211,E311 libfunc</span><br><span class="line">class E212,E312 newfunc</span><br></pre></td></tr></table></figure>
+<h3 id="Start">Start</h3>
+<p>在record页面onload调用recorder.startNative</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[&quot;startNative&quot;] --- B[&quot;RecorderNative::Start&quot;]</span><br><span class="line">    B --- C[&quot;Recorder.Start&quot;]</span><br><span class="line">    C --- D1[&quot;muxer_-&gt;Start&quot;]</span><br><span class="line">    C --- D2[&quot;videoEncoder_-&gt;Start&quot;]</span><br><span class="line">    C --- D3[&quot;EncOutputThread&quot;]</span><br><span class="line">    C --- D4[&quot;Audio&quot;]</span><br><span class="line">    D1 --- D11[OH_AVMuxer_Start]</span><br><span class="line">    D2 --- D21[OH_VideoEncoder_Start]</span><br><span class="line">    D4 --- D41[&quot;AudioCapturerStart&quot;]</span><br><span class="line">    D4 --- D42[&quot;audioEncoder-&gt;Start&quot;]</span><br><span class="line">    D4 --- D43[&quot;AudioEncInputThread&quot;]</span><br><span class="line">    D4 --- D44[&quot;AudioEncOutputThread&quot;]</span><br><span class="line"></span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line">class D11,D21 libfunc</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD </span><br><span class="line">    A[&quot;EncOutputThread&quot;] --- Z[&quot;循环体&quot;]</span><br><span class="line">    A --- D[StartRelease]</span><br><span class="line">    subgraph 循环</span><br><span class="line">        Z --- B[&quot;muxer_-&gt;WriteSample&quot;]</span><br><span class="line">        Z ---|传入pop出的bufferInfo的bufferIndex| C[&quot;videoEncoder_-&gt;FreeOutputBuffer&quot;]</span><br><span class="line">        C --- |将处理后的index对应的OH_AVBuffer退回给编码器|C1[&quot;OH_VideoEncoder_FreeOutputBuffer&quot;]</span><br><span class="line">        B --- B1[&quot;OH_AVBuffer_SetBufferAttr&quot;]</span><br><span class="line">        B --- |将sample写入muxer封装器对应视频轨道|B2[&quot;OH_AVMuxer_WriteSampleBuffer&quot;]</span><br><span class="line">    end</span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line"></span><br><span class="line">class C1,B1,B2 libfunc</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD </span><br><span class="line">    A[&quot;AudioEncInputThread&quot;] --- Z[&quot;循环体&quot;]</span><br><span class="line">    subgraph 循环</span><br><span class="line">       Z --- B[audioEncContext_-&gt;ReadCache]</span><br><span class="line">       Z --- C[audioEncoder_-&gt;PushInputData]</span><br><span class="line">       C --- C1[OH_AVBuffer_SetBufferAttr]</span><br><span class="line">       C --- C2[OH_AudioCodec_PushInputBuffer]</span><br><span class="line">    end</span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line"></span><br><span class="line">class C1,C2 libfunc</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD </span><br><span class="line">    A[&quot;AudioEncOutputThread&quot;] --- Z[&quot;循环体&quot;]</span><br><span class="line">    A --- D[StartRelease]</span><br><span class="line">    subgraph 循环</span><br><span class="line">        Z --- B[&quot;muxer_-&gt;WriteSample&quot;]</span><br><span class="line">        Z ---|传入pop出的bufferInfo的bufferIndex| C[&quot;audioEncoder_-&gt;FreeOutputData&quot;]</span><br><span class="line">        C --- |将处理后的index对应的OH_AVBuffer退回给编码器|C1[&quot;OH_AudioCodec_FreeOutputBuffer&quot;]</span><br><span class="line">        B --- B1[&quot;OH_AVBuffer_SetBufferAttr&quot;]</span><br><span class="line">        B --- |将sample写入muxer封装器对应视频轨道|B2[&quot;OH_AVMuxer_WriteSampleBuffer&quot;]</span><br><span class="line">    end</span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line"></span><br><span class="line">class C1,B1,B2 libfunc</span><br></pre></td></tr></table></figure>
+<h3 id="Stop">Stop</h3>
+<p>用户在录制页面点击结束录制按钮时release函数调用recorder.stopNative</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[&quot;stopNative&quot;] --- B[&quot;NativeRecorder::Stop&quot;]</span><br><span class="line">    B --- C[&quot;NativeStop&quot;]</span><br><span class="line">    C --- D[&quot;Recorder.Stop&quot;]</span><br><span class="line">    D --- D1[&quot;videoEncoder_-&gt;NotifyEndOfStream&quot;]</span><br><span class="line">    D --- D2[&quot;WaitForDone&quot;]</span><br><span class="line">    D1 --- E1[&quot;OH_VideoEncoder_NotifyEndOfStream&quot;]</span><br><span class="line"></span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line"></span><br><span class="line">class E1 libfunc</span><br></pre></td></tr></table></figure>
+<h2 id="运行逻辑">运行逻辑</h2>
+<h3 id="AudioInputThread">AudioInputThread</h3>
+<ul>
+<li>AudioCapturerOnReadData通过WriteCache将数据写入userData的cache中</li>
+<li>AudioEncInputThread中将cache中数据读取到bufferInfo的buffer，bufferInfo是从inputBufferInfoQueue中pop出来的<br>
+以上读写的cache如何保证是同一个cache？
+<ul>
+<li>AudioCapturerInit会传入 Recorder 中的 audioEncContext_ (<code>CodecUserData*</code>类型) ，注册回调时会指定它为回调函数所依赖的数据</li>
+<li>AudioEncInputThread中读取的cache就是Recorder::audioEncContext_</li>
+</ul>
+</li>
+</ul>
+<h3 id="Audio注册回调">Audio注册回调</h3>
+<ol>
+<li>OnNeedInputBuffer, OnNewOutputBuffer分别会向 inputBufferInfoQueue 和 outputBufferQueue 中添加对应 index 的 buffer，供 InputThread 和 OutputThread pop。</li>
+<li>当 OH_AVCodec 在运行过程中需要新的输入数据时，会回调 OnNeedInputBuffer 给出一个可用的 buffer，InputThread 会将<br>
+将 cache 中数据（audioCapturer生成）写入 buffer，之后调用 OH_AudioCodec_PushInputBuffer 告诉 codec 对应 Index 的 buffer 已经写有数据可以进行编码了。</li>
+<li>编码结束后回调 OnNewOutputBuffer，给出存储编码数据的buffer，OutputThread 将buffer中数据写入muxer_</li>
+</ol>
+]]></content>
+      <categories>
+        <category>AVCodec</category>
+      </categories>
+      <tags>
+        <tag>实习</tag>
+        <tag>鸿蒙5</tag>
+        <tag>AVCodec</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HelloAVCodec项目学习</title>
+    <url>/posts/live/hello-avcodec/</url>
+    <content><![CDATA[<h2 id="前置知识：解码流程-star">前置知识：解码流程 :star:</h2>
+<p><a href="https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/video-decoding">官方文档</a></p>
+<ul>
+<li>
+<p>解码器状态机<br>
+<img src="\img\post\live\decoder-fsm.png" alt="decoder-fsm" title="解码器状态机"></p>
+</li>
+<li>
+<p>AVCodec编码流程<br>
+<img src="\img\post\live\decode-process.png" alt="decode-process" title="编码流程"></p>
+</li>
+</ul>
+<h2 id="项目结构">项目结构</h2>
+<p>相关源码仓：<a href="https://gitee.com/westyao/hello-avcodec/tree/dev_live_demo">Hello-AVCodec</a></p>
+<ul>
+<li>该源码仓文件结构和Cmakelist中的不符，编译会报错</li>
+</ul>
+<details>
+  <summary><b>目录结构（点击）</b></summary>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">├─main</span><br><span class="line">│  ├─cpp</span><br><span class="line">│  │  ├─bounds_checking_function</span><br><span class="line">│  │  │  ├─include</span><br><span class="line">│  │  │  └─src</span><br><span class="line">│  │  ├─common</span><br><span class="line">│  │  │  └─dfx</span><br><span class="line">│  │  ├─napi_wrapper</span><br><span class="line">│  │  │  └─Sample</span><br><span class="line">│  │  ├─sample_framework</span><br><span class="line">│  │  │  └─test</span><br><span class="line">│  │  │      └─unittest</span><br><span class="line">│  │  │          └─video_test</span><br><span class="line">│  │  │              └─video_test</span><br><span class="line">│  │  │                  ├─capbilities</span><br><span class="line">│  │  │                  │  ├─capbility_node</span><br><span class="line">│  │  │                  │  │  ├─data_producer</span><br><span class="line">│  │  │                  │  │  │  ├─bitstream_reader</span><br><span class="line">│  │  │                  │  │  │  ├─data_producer_base</span><br><span class="line">│  │  │                  │  │  │  ├─demuxer</span><br><span class="line">│  │  │                  │  │  │  └─raw_data_reader</span><br><span class="line">│  │  │                  │  │  └─video_codec</span><br><span class="line">│  │  │                  │  │      ├─video_codec</span><br><span class="line">│  │  │                  │  │      ├─video_decoder</span><br><span class="line">│  │  │                  │  │      └─video_encoder</span><br><span class="line">│  │  │                  │  ├─sample_buffer_queue</span><br><span class="line">│  │  │                  │  └─sample_window_manager</span><br><span class="line">│  │  │                  │      └─window_wrapper</span><br><span class="line">│  │  │                  │          └─include</span><br><span class="line">│  │  │                  ├─common</span><br><span class="line">│  │  │                  │  └─include</span><br><span class="line">│  │  │                  ├─demo</span><br><span class="line">│  │  │                  └─sample</span><br><span class="line">│  │  │                      ├─base</span><br><span class="line">│  │  │                      ├─decoder</span><br><span class="line">│  │  │                      ├─encoder</span><br><span class="line">│  │  │                      ├─helper</span><br><span class="line">│  │  │                      │  └─include</span><br><span class="line">│  │  │                      └─yuv_viewer</span><br><span class="line">│  │  ├─types</span><br><span class="line">│  │  │  └─libavcodecdemo</span><br><span class="line">│  │  └─xcomponent_window_wrapper</span><br><span class="line">│  ├─ets</span><br><span class="line">│  │  ├─avcodecdemoability</span><br><span class="line">│  │  ├─avcodecdemobackupability</span><br><span class="line">│  │  └─pages</span><br><span class="line">│  └─resources</span><br><span class="line">│      ├─base</span><br><span class="line">│      │  ├─element</span><br><span class="line">│      │  ├─media</span><br><span class="line">│      │  └─profile</span><br><span class="line">│      └─dark</span><br><span class="line">│          └─element</span><br><span class="line">├─mock</span><br><span class="line">├─ohosTest</span><br><span class="line">│  └─ets</span><br><span class="line">│      └─test</span><br><span class="line">└─test</span><br></pre></td></tr></table></figure>
+</details>
+<ul>
+<li>
+<p>src/main/cpp/CMakeLists.txt：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta"># clone video codec demo code</span></span><br><span class="line"><span class="keyword">if</span>(NOT EXISTS $&#123;SAMPLE_FRAMEWORK_PATH&#125;)</span><br><span class="line"><span class="built_in">message</span>(STATUS <span class="string">&quot;sample_framework directory does not exist, do clone code&quot;</span>)</span><br><span class="line"><span class="built_in">execute_process</span>(COMMAND git config core.sparsecheckout <span class="literal">true</span>)</span><br><span class="line"><span class="built_in">execute_process</span>(COMMAND git clone --no-checkout --filter=blob:none --sparse https:<span class="comment">//gitee.com/westyao/multimedia_av_codec.git $&#123;SAMPLE_FRAMEWORK_PATH&#125;)</span></span><br><span class="line"><span class="built_in">file</span>(WRITE $&#123;SAMPLE_FRAMEWORK_PATH&#125;/.git/info/sparse-checkout <span class="string">&quot;test/unittest/video_test/video_test/\n&quot;</span>)</span><br><span class="line"><span class="built_in">execute_process</span>(COMMAND git -C $&#123;SAMPLE_FRAMEWORK_PATH&#125; checkout dev_vcd)</span><br><span class="line"><span class="built_in">endif</span>()</span><br></pre></td></tr></table></figure>
+<p>上面代码在sample_wrapper目录不存在时从远程仓库的特定分支（dev_vcd）拉取<a href="https://gitee.com/westyao/multimedia_av_codec/tree/dev_vcd/test/unittest/video_test/video_test">相关目录下的测试代码</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="UI层">UI层</h2>
+<ul>
+<li><strong>src/main/ets/pages</strong>: UI界面
+<ul>
+<li>NavigationPage.ets: Column中布置两个按钮</li>
+<li>PlayerPage.ets: 调用cpp中实现的NAPI（声明于cpp/types/libavcodecdemo/index.d.tx，TS到CPP代码的转化过程我不清楚）
+<ul>
+<li>Play(surfaceId, uri)：cpp/napi_wrapper/napi_init.cpp</li>
+<li>OnSurfaceCreated(surfaceId): cpp/xcomponents_window_wrapper/xcomponents_window_wrapper.cpp</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Native层：函数调用关系分析">Native层：函数调用关系分析</h2>
+<h3 id="一-Native层接口——Play函数">一.Native层接口——Play函数</h3>
+<p><strong>Play</strong>：异步机制实现播放逻辑，最终返回一个 Promise 供 JS 层等待结果。</p>
+  <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">ret = <span class="built_in">napi_create_async_work</span>(</span><br><span class="line">    env,</span><br><span class="line">    <span class="literal">nullptr</span>,          <span class="comment">// 异步工作无特定对象绑定</span></span><br><span class="line">    work_name,        <span class="comment">// 工作名称（用于调试/日志）</span></span><br><span class="line">    ExecutePlay,       <span class="comment">// 实际执行播放的回调</span></span><br><span class="line">    CompletePlay,      <span class="comment">// 播放完成后的回调（通知 JS Promise）</span></span><br><span class="line">    asyncData,         <span class="comment">// 传递上下文数据</span></span><br><span class="line">    &amp;asyncWork</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>!!! tip “图示说明”<br>
+- 图中绿色节点中为AVCodec Kit库函数<br>
+- 蓝色节点用来说明类间继承关系<br>
+- <code>VideoDecoderAPI&#123;10/11&#125;Buffer</code>表示<code>VideoDecoderAPI10Buffer</code>或<code>VideoDecoderAPI11Buffer</code><br>
+- XYZ(x_y_z.cpp) 表示XYZ定义在x_y_z.cpp文件内</p>
+<h4 id="调用链图1">调用链图1</h4>
+<p>下图ExecutePlay调用时已确定SampleInfo(sample_info.h)为</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">SampleInfo sampleInfo = &#123;</span><br><span class="line">       .inputFilePath = asyncData-&gt;uri.<span class="built_in">c_str</span>(),</span><br><span class="line">       .dataProducerInfo = &#123;</span><br><span class="line">           .demuxerSourceType = isUri ? DEMUXER_SOURCE_TYPE_URI : DEMUXER_SOURCE_TYPE_FILE,</span><br><span class="line">       &#125;,</span><br><span class="line">       .codecConsumerType = CODEC_CONSUMER_TYPE_DECODER_RENDER_OUTPUT,</span><br><span class="line">       .surfaceId = asyncData-&gt;surfaceId</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<p>这时已确定后面构造的类型：</p>
+<ul>
+<li>DataProducer：Demuxer</li>
+<li>DataConsumer：DECODER_RENDER_OUTPUT</li>
+<li>SampleType：VIDEO_SAMPLE（默认值）</li>
+<li>CodecType：VIDEO_HW_DECODER（默认值）</li>
+<li>codecRunMode：API11_SURFACE（默认值）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[&quot;ExecutePlay(napi_init.cpp)&quot;] --&gt;|传入SampleInfo参数| B[&quot;RunSample(sample_helper.cpp)&quot;]</span><br><span class="line">    B --- |根据SampleType创建Sample| C[&quot;SampleFactory::CreateSample(sample_base.cpp)&quot;]</span><br><span class="line">    C --- |SampleType=VIDEO_SAMPLE| D(&quot;VideoSampleBase(2个子类)&quot;)</span><br><span class="line">    C --&gt; |SampleType=YUV_VIEWER|E(&quot;YuvViewer&quot;)</span><br><span class="line">    D --&gt; F[&quot;VSB.Init&quot;]</span><br><span class="line">    D --&gt; P[&quot;VSB.Start&quot;]</span><br><span class="line">    D --&gt; Q[&quot;SampleBase.WaitForSampleDone&quot;]</span><br><span class="line">    E --&gt;R1[&quot;YuvViewer.Init&quot;]</span><br><span class="line">    E --&gt;R2[&quot;YuvViewer.Start&quot;]</span><br><span class="line">    E --&gt;Q[&quot;SampleBase.WaitForSampleDone&quot;]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>其中，<code>CreateSample(SampleInfo)</code>会根据<code>SampleInfo.SampleType</code>返回两种不同的sample：<code>VIDEO_SAMPLE</code>和 <code>YUV_VIEWER</code>；<code>VIDEO_SAMPLE</code>也有两种： <code>VideoEncodeSample</code>, <code>VideoDecodeSample</code>，由<code>CodecType</code>字段确定（这里为VideoDecodeSample）。</p>
+<ul>
+<li>
+<p><strong>sample间继承关系</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  A[&quot;SampleBase(sample_base.cpp)&quot;] --&gt;B[&quot;VideoSampleBase(video_sample_base.cpp)&quot;]</span><br><span class="line">  B --&gt; C[&quot;VideoEncoderSample&quot;]</span><br><span class="line">  B --&gt; D[&quot;VideoDecoderSample&quot;]</span><br><span class="line">  A --&gt; E[&quot;YuvViewer&quot;]</span><br><span class="line">  classDef inherit fill:#2196F3,stroke:#1976D2,stroke-width:2px;</span><br><span class="line">  class A,B,C,D,E inherit</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="调用链图2——VSB-Init">调用链图2——VSB.Init</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    F[&quot;VSB.Init&quot;]</span><br><span class="line">    F --&gt;|根据sampleinfo.dataProducerInfo.dataProducerType创建dataProducer并初始化| G(&quot;DataProducerFactory::CreateDataProducer(3种)&quot;)</span><br><span class="line">    G --&gt;|这里创建Demuxer| H[&quot;dataProducer-&gt;Init&quot;]</span><br><span class="line">    F --&gt; I[&quot;VSB/VDS.CreateWindow&quot;]</span><br><span class="line">    I --&gt;|VDS会根据codecRunMode、codecConsumerType创建不同窗口| Z[&quot;WindowManager::GetInstance().CreateWindowWrapper&quot;]</span><br><span class="line">    F --&gt; J[&quot;VSB.InitVideoCodec&quot;]</span><br><span class="line">    F --&gt;|初始化context-&gt;in\outputBufferQueue| O[&quot;VXS.CreateSampleBufferQueue&quot;]</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    J[&quot;VSB.InitVideoCodec&quot;] --&gt;|传入codecType, codecRunMode| P(&quot;VideoCodecFactory::CreateVideoCodec&quot;)</span><br><span class="line">    P ---|根据codecType,codeRunMode选择调用，返回VXAPI（10/11）（Surface/Buffer）| P1[&quot;CreateVX&quot;]</span><br><span class="line">    subgraph 调用于InitVideoCodec</span><br><span class="line">        P1 --- |创建编/解码器实例| J1[&quot;VX-&gt;Create&quot;]</span><br><span class="line">        P1 --- |配置编/解码器| J2[&quot;VX-&gt;Configure&quot;]</span><br><span class="line">        P1 --- |如果是Surface 输出| J3[&quot;VX-&gt;DealWithSurface&quot;]</span><br><span class="line">        P1 --- |注册回调函数指针集合OH_AVCodecCallback| J4[&quot;VXAPI&#123;10/11&#125;-&gt;SetCallback&quot;]</span><br><span class="line">        P1 --- |进行数据准备| J5[&quot;VX-&gt;Prepare&quot;]</span><br><span class="line">        J1 --- |通过GetCodecName获取codecName后调用| K1[&quot;OH_VX_CreateByName&quot;]</span><br><span class="line">        J2 --- |配置好OH_AVFormat后调用| K2[&quot;OH_VX_Configure&quot;]</span><br><span class="line">        J3 --- K3[&quot;OH_VX_SetSurface&quot;]</span><br><span class="line">        J4 --- |API10| K41[&quot;OH_VX_SetCallback&quot;]</span><br><span class="line">        J4 --- |API11| K42[&quot;OH_VX_RegisterCallback&quot;]</span><br><span class="line">        J5 --- K5[&quot;OH_VX_Prepare&quot;]</span><br><span class="line">    end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line"></span><br><span class="line">class K1 libfunc</span><br><span class="line">class K2 libfunc</span><br><span class="line">class K3 libfunc</span><br><span class="line">class K41 libfunc</span><br><span class="line">class K42 libfunc</span><br><span class="line">class K5 libfunc</span><br></pre></td></tr></table></figure>
+<p>接调用链图1中VSB.Init，其中</p>
+<ul>
+<li>VSB: <code>VideoSampleBase</code>
+<ul>
+<li>含SampleContex成员，存储sampleInfo, windowWrapper, videoCodec, inputBufferQueue, outputBufferQueue</li>
+<li>含dataProducer成员</li>
+</ul>
+</li>
+<li>VES: <code>VideoEncoderSample</code></li>
+<li>VDS: <code>VideoDecoderSample</code></li>
+<li>VXS: VES 或 VDS</li>
+<li>VCB: <code>VideoCodecBase</code></li>
+<li>VX: <code>VideoEncoder</code> 或 <code>VideoDecoder</code></li>
+</ul>
+<p><strong>DataProducer（左）和VideoCodec继承关系（右）</strong>：（新代码两者都基于CapbilityNodeBase类）</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  B[&quot;DataProducerBase(data_producer_base.cpp)&quot;]</span><br><span class="line">  B --&gt; C[&quot;BitStreamReader&quot;]</span><br><span class="line">  B --&gt; D[&quot;Demuxer&quot;]</span><br><span class="line">  B --&gt; E[&quot;RawdataReader&quot;]</span><br><span class="line">  F[&quot;VideoCodecBase(video_codec_base.cpp)&quot;]</span><br><span class="line">  F --&gt; G[&quot;VideoDecoder&quot;]</span><br><span class="line">  F --&gt; H[&quot;VideoEncoder&quot;]</span><br><span class="line">  G --- I[&quot;VideoDecoderAPI&#123;10/11&#125;&quot;]</span><br><span class="line">  I --- J[&quot;VideoDecoderAPI&#123;10/11&#125;Buffer&quot;]</span><br><span class="line">  I --- K[&quot;VideoDecoderAPI&#123;10/11&#125;Surface&quot;]</span><br><span class="line">  classDef inherit fill:#2196F3,stroke:#1976D2,stroke-width:2px;</span><br><span class="line">  class B,C,D,E,F,G,H,I,J,K inherit</span><br></pre></td></tr></table></figure>
+<p>!!! note “注”<br>
+上图<code>VideoEncoder</code>向下继承关系和<code>VideoDecoder</code>同理。</p>
+<h4 id="调用链图3——VSB-Start">调用链图3——VSB.Start</h4>
+<p>接调用链图1中VSB.Start</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[&quot;VSB.Start&quot;] --&gt; B[&quot;VX-&gt;Start&quot;]</span><br><span class="line">    A --&gt;|更新帧信息| C[&quot;VX-&gt;UpdatePictureInfo&quot;]</span><br><span class="line">    A --&gt;|启动输入/输出线程| D[&quot;VXS.StartLoop&quot;]</span><br><span class="line">    B --- E[&quot;OH_Video&#123;En/De&#125;coder_Start&quot;]</span><br><span class="line">    C --- F[&quot;GetFormat&quot;]</span><br><span class="line">    F --- F1[&quot;OH_VideoDecoder_GetOutputDescription&quot;]</span><br><span class="line">    D --- |解码| G1[&quot;VDS.StartLoop&quot;]</span><br><span class="line">    D --- |编码| G2[&quot;VES.StartLoop&quot;]</span><br><span class="line">    G1 --- G11[&quot;VDS.InputThread&quot;]</span><br><span class="line">    G1 --- G12[&quot;VDS.OutputThread&quot;]</span><br><span class="line">    G2 --- G21[&quot;VES.&#123;Surface/Buffer&#125;InputThread&quot;]</span><br><span class="line">    G2 --- G22[&quot;VES.OutputThread&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line">class E libfunc</span><br><span class="line">class F1 libfunc</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>1. VideoDecoderSample::InputThread</strong>:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">    A[&quot;VDS::InputThread&quot;] --- B[&quot;AVCodecTrace::TraceBegin&quot;]</span><br><span class="line">    A --- |进入输入轮转（内部为执行顺序）| C1[&quot;inputBufferQueue-&gt;DequeueBuffer&quot;]</span><br><span class="line">    subgraph 循环体</span><br><span class="line">        C1 --&gt; C2[&quot;dataProducer-&gt;ReadSample&quot;]</span><br><span class="line">        C2 --&gt; C3[&quot;ThreadSleep(sample_utils.cpp)&quot;]</span><br><span class="line">        C3 --&gt; C4[&quot;VDAPI&#123;10/11&#125;-&gt;PushInput&quot;]</span><br><span class="line">        C4 --&gt; C1[&quot;inputBufferQueue-&gt;DequeueBuffer&quot;]</span><br><span class="line">        C4 --- Z[&quot;OH_VideoDecoder_PushInputBuffer&quot;]</span><br><span class="line">    end</span><br><span class="line">    A --- D[&quot;VSB.PushEosFrame&quot;]</span><br><span class="line">    B --- B1[&quot;OH_HiTrace_StartAsyncTrace&quot;]</span><br><span class="line">    D --- D1[&quot;VDAPI&#123;10/11&#125;-&gt;PushInput&quot;]</span><br><span class="line">    D1 --- D2[&quot;OH_VideoDecoder_PushInputBuffer&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line">class Z libfunc</span><br><span class="line">class B1 libfunc</span><br><span class="line">class D2 libfunc</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>2. VideoDecoderSample::OutputThread</strong>:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">    A[&quot;VDS::OutputThread&quot;] --- |进入输出轮转（内部为执行顺序）| C1[&quot;outputBufferQueue-&gt;DequeueBuffer&quot;]</span><br><span class="line">    subgraph 循环体</span><br><span class="line">        C1 --&gt; C2[&quot;DumpOutput&quot;]</span><br><span class="line">        C2 --&gt; C3[&quot;ThreadSleep(sample_utils.cpp)&quot;]</span><br><span class="line">        C3 --&gt; C4[&quot;VXAPI&#123;10/11&#125;&#123;Surface/Buffer&#125;-&gt;FreeOutput&quot;]</span><br><span class="line">        C4 --&gt; C1</span><br><span class="line"></span><br><span class="line">    end</span><br><span class="line">        C4 ---|API11Surface| Z41[&quot;OH_VD_RenderOutputBuffer&quot;]</span><br><span class="line">        C4 ---|API11Buffer| Z42[&quot;OH_VD_FreeOutputBuffer&quot;]</span><br><span class="line">        C4 ---|API10Surface| Z43[&quot;OH_VD_RenderOutputData(弃用)&quot;]</span><br><span class="line">        C4 ---|API10Buffer| Z44[&quot;OH_VD_FreeOutputData(弃用)&quot;]</span><br><span class="line">    A --- B[&quot;AVCodecTrace::TraceEnd&quot;]</span><br><span class="line">    A --- D[&quot;AVCodecTrace::CounterTrace&quot;]</span><br><span class="line">    A --- E[&quot;SampleBase.NotifySampleDone&quot;]</span><br><span class="line">    B --- B1[&quot;OH_HiTrace_FinishAsyncTrace&quot;]</span><br><span class="line">    D --- D1[&quot;OH_HiTrace_CountTrace&quot;]</span><br><span class="line"></span><br><span class="line">classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line">class Z libfunc</span><br><span class="line">class B1 libfunc</span><br><span class="line">class D1 libfunc</span><br><span class="line">class Z41 libfunc</span><br><span class="line">class Z42 libfunc</span><br><span class="line">class Z43 libfunc</span><br><span class="line">class Z44 libfunc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="YuvViewer调用链">YuvViewer调用链</h4>
+<p>核心功能是将内存中的 YUV 原始数据通过图形窗口渲染为人类可理解的图像</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  A[&quot;YuvViewer&quot;] --- B[&quot;YuvViewer.Init&quot;]</span><br><span class="line">  A --- C[&quot;YuvViewer.Start&quot;]</span><br><span class="line">  A --- D[&quot;YueViewer.WaitForSampleDone&quot;]</span><br><span class="line">  B --- E[&quot;DataProducerFactory::CreateDataProducer(3种)&quot;]</span><br><span class="line">  E --- F[&quot;dataProducer.Init&quot;]</span><br><span class="line">  B --- G[&quot;CreateWindow&quot;]</span><br><span class="line">  C --- H[&quot;InputThread&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  %% 节点样式定义</span><br><span class="line">  A[&quot;YuvViewer&quot;] </span><br><span class="line">  B[&quot;YuvViewer.Init&quot;] </span><br><span class="line">  C[&quot;YuvViewer.Start&quot;] </span><br><span class="line">  D[&quot;YueViewer.WaitForSampleDone&quot;] </span><br><span class="line">  E[&quot;DataProducerFactory::CreateDataProducer(3种)&quot;] </span><br><span class="line">  F[&quot;dataProducer.Init&quot;] </span><br><span class="line">  G[&quot;CreateWindow&quot;]</span><br><span class="line"></span><br><span class="line">  %% 连接关系定义</span><br><span class="line">  A --&gt;|初始化流程| B</span><br><span class="line">  A --&gt;|启动流程| C</span><br><span class="line">  A --&gt;|等待流程| D</span><br><span class="line">  B --&gt;|创建数据生产者| E</span><br><span class="line">  E --&gt;|初始化生产者| F</span><br><span class="line">  B --&gt;|创建窗口| G</span><br><span class="line"></span><br><span class="line">  %% 设置节点样式</span><br><span class="line">  classDef core fill:#4CAF50,stroke:#388E3C,stroke-width:2px;  </span><br><span class="line">  classDef factory fill:#FF9800,stroke:#F57C00,stroke-width:2px;  </span><br><span class="line">  classDef window fill:#607D8B,stroke:#546E7A,stroke-width:2px; </span><br><span class="line">  classDef process fill:#2196F3,stroke:#1976D2,stroke-width:2px;</span><br><span class="line"></span><br><span class="line">  class A core</span><br><span class="line">  class B core</span><br><span class="line">  class C core</span><br><span class="line">  class D core</span><br><span class="line">  class E factory</span><br><span class="line">  class F process</span><br><span class="line">  class G window</span><br><span class="line"></span><br><span class="line">  %% 设置边样式</span><br><span class="line">  linkStyle 0 fill:#fff, stroke:#388E3C, stroke-width:2px;</span><br><span class="line">  linkStyle 1 fill:#fff, stroke:#1976D2, stroke-width:2px;</span><br><span class="line">  linkStyle 2 fill:#fff, stroke:#F57C00, stroke-width:2px;</span><br><span class="line">  linkStyle 3 fill:#fff, stroke:#546E7A, stroke-width:2px;</span><br><span class="line"></span><br><span class="line">  %% 分区分隔（用透明矩形模拟）</span><br><span class="line">  A --&gt;|虚线分隔| H[&quot;dd&quot;]</span><br><span class="line">  class H separator</span><br><span class="line">  classDef separator fill:transparent,stroke:transparent;</span><br><span class="line"></span><br><span class="line">  style H stroke-dasharray:5,2;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="语法分析">语法分析</h4>
+<p>!!! info “static_pointer_cast”<br>
+选择Video sample的代码如下：</p>
+<pre><code><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">sample = (info.codecType &amp; <span class="number">0b10</span>) ? <span class="comment">// 0b10: Video encoder mask</span></span><br><span class="line">        std::<span class="built_in">static_pointer_cast</span>&lt;SampleBase&gt;(std::<span class="built_in">make_shared</span>&lt;VideoEncoderSample&gt;()) :</span><br><span class="line">        std::<span class="built_in">static_pointer_cast</span>&lt;SampleBase&gt;(std::<span class="built_in">make_shared</span>&lt;VideoDecoderSample&gt;());</span><br></pre></td></tr></table></figure>
+
+`static_pointer_cast`仅用于智能指针(如shared_ptr)间的类型转换，用于编译时已知合法的类型转换，包括继承关系中的向上/向下转换，以及非继承的类型兼容转换。但向下转换时需人工确保目标类型与实际对象类型一致。
+</code></pre>
+<hr>
+<h3 id="二-Native层接口——OnSurfaceCreated">二. Native层接口——OnSurfaceCreated</h3>
+<ul>
+<li>
+<p><strong>OnSurfaceCreated</strong>: 将 Surface 与原生窗口（NativeWindow）绑定，并通过窗口管理器（WindowManager）注册该窗口的包装类（WindowWrapper），以确保后续的图形或 UI 操作可以基于该窗口执行。<br>
+NAPI定义于<code>cpp/napi_wrapper/sample/sample_napi_wrapper.cpp</code>.<br>
+解析函数为 <code>SampleNapiWrapper::OnSurfaceCreated(napi_env env, napi_callback_info info)</code>，实际调用<code>OHOS::MediaAVCodec::Sample::XComponentWindowWrapper::OnSurfaceCreated(surfaceId);</code></p>
+</li>
+<li>
+<p><strong>OnSurfaceCreated调用链</strong>：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  A[&quot;OnSurfaceCreated&quot;] ---|传入surfaceId| B[&quot;XComponentWindowWrapper::OnSurfaceCreated&quot;]</span><br><span class="line">  B ---|根据surfaceId创建对应的nativeWindow实例| C[&quot;OH_NativeWindow_CreateNativeWindowFromSurfaceId&quot;]</span><br><span class="line">  B --- |注册窗口包装类|D[&quot;WindowManager::GetInstance().RegisterWindowWrapper&quot;]</span><br><span class="line"></span><br><span class="line">  classDef libfunc fill:#4CAF50,stroke:#388E3C,stroke-width:2px;</span><br><span class="line">  class C libfunc</span><br></pre></td></tr></table></figure>
+<p><strong>WindowWrapper继承关系</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">  A[&quot;WindowWrapper&quot;] --- B[&quot;NativeImageWindowWrapper&quot;]</span><br><span class="line">  A --- C[&quot;RosenWindowWrapper&quot;]</span><br><span class="line">  A --- D[&quot;XComponentWindowWrapper&quot;]</span><br><span class="line">  classDef inherit fill:#2196F3,stroke:#1976D2,stroke-width:2px;</span><br><span class="line">  class A,B,C,D inherit</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>AVCodec</category>
+      </categories>
+      <tags>
+        <tag>实习</tag>
+        <tag>鸿蒙5</tag>
+        <tag>编解码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>live开发日志（一）</title>
+    <url>/posts/live/live1/</url>
     <content><![CDATA[<h2 id="介绍">介绍</h2>
-<p>本项目实现基于HarmonyOS NEXT系统的直播应用NLive（个人暂定），这里记录开发日志。</p>
+<p>本项目实现基于HarmonyOS NEXT系统的直播应用，这里记录开发日志。</p>
 <h2 id="目标">目标</h2>
 <ul>
 <li>[ ]实现主播开播，用户看播</li>
@@ -28,15 +322,16 @@
 </ul>
 ]]></content>
       <categories>
-        <category>NLive</category>
+        <category>鸿蒙live开发</category>
       </categories>
       <tags>
-        <tag>NLive</tag>
+        <tag>鸿蒙5</tag>
+        <tag>live</tag>
       </tags>
   </entry>
   <entry>
     <title>SVD</title>
-    <url>/2025/02/05/SVD/</url>
+    <url>/posts/math/SVD/</url>
     <content><![CDATA[<h2 id="Introduction">Introduction</h2>
 <p>SVD(singular value decomposition) is a mathematical method to process matrix. SVD can help extract the key traits of the number in a matrix. Apparently we can use it to process images because images are expressed as matries in computer science. This article is aimed to figure out why and how the SVD can extract the traits of the matrix. Plus I want to give several examples of its application in computere science.</p>
 <h2 id="SVD">SVD</h2>
@@ -248,37 +543,8 @@ l0,-1944c-2,-159.3,-10,-310.7,-24,-454c-53.3,-528,-210,-949.7,
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/01/24/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start">Quick Start</h2>
-<h3 id="Create-a-new-post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<img src="/img/scene/Fr_Alexandre3.jpg" title="beautiful scene">
-<h3 id="Run-server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<img src="/img/scene/Fr_Alexandre3.jpg" title="beautiful scene" class="no-lightbox">
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <tags>
-        <tag>homepage</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>homepage</title>
-    <url>/2025/01/24/homepage/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Quadratic probing</title>
-    <url>/2025/01/27/quadratic-probing/</url>
+    <url>/posts/math/quadratic-probing/</url>
     <content><![CDATA[<h2 id="散列表——平方探测——二次剩余">散列表——平方探测——二次剩余</h2>
 <h3 id="散列表的平方探测">散列表的平方探测</h3>
 <p>我们先回顾一下散列表（Hash Table）的平方探测（Quadratic Probing）：</p>
@@ -364,31 +630,8 @@ with quadratic probing.</p>
       </tags>
   </entry>
   <entry>
-    <title>Javascript 学习记录</title>
-    <url>/2025/04/13/js-learn/</url>
-    <content><![CDATA[<h2 id="缘起">缘起</h2>
-<p>SRTP项目要实现基于HarmonyOS NEXT系统的直播应用，需要使用ArkTS，由于ArkTS基于TS，TS基于JS，我想从JS学起会更加顺利，而且JS的应用会更广泛，在对比中学习应该会更快而且更容易看清它们各自的特性。此部分独立于NLive（直播应用名称，个人暂定）的开发记录。</p>
-<p>这里仅记录学习JS过程中的进度，参考的文献，以及遇到的问题和解决办法等可以容易说明且直观的内容。<br>
-具体JS知识的相关笔记在<a href="https://note.mythlogos.top/">这里</a>。</p>
-<h2 id="目标">目标</h2>
-<p>理解JS语言特性且能应用，初步目标：理解博客内使用的相关JS，实现有角度滚动图片瀑布流。</p>
-<h2 id="学习网站">学习网站</h2>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/What_is_JavaScript">MDN Web Docs</a></p>
-<h2 id="进度">进度</h2>
-<ul>
-<li>[ ] MDN Web Docs</li>
-</ul>
-]]></content>
-      <categories>
-        <category>JS</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>WSL与主机的简单网络通信</title>
-    <url>/2025/11/05/wsl-network/</url>
+    <url>/posts/technology/wsl-network/</url>
     <content><![CDATA[<h2 id="WSL的网络配置">WSL的网络配置</h2>
 <p>参考的官方文档：<a href="https://learn.microsoft.com/zh-cn/windows/wsl/networking">使用WSL访问网络应用程序</a></p>
 <p>按下<code>Win</code>键搜索<code>WSL Settings</code>，可以发现其中的网络模式有：</p>
@@ -459,6 +702,50 @@ with quadratic probing.</p>
       </categories>
       <tags>
         <tag>WSL Network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>live开发日志（二）</title>
+    <url>/posts/live/live2/</url>
+    <content><![CDATA[<h2 id="网络部分接入计划">网络部分接入计划</h2>
+<h3 id="WebRTC传输">WebRTC传输</h3>
+<ul>
+<li>难点：似乎需要按照<a href="https://gitcode.com/openharmony-sig/ohos_webrtc/tree/master/docs/ohos">gitcode.com/openharmony-sig/ohos_webrtc</a>中的文档自行编译，编译难度高</li>
+<li>库较为庞大，用不到那么多功能</li>
+</ul>
+<h3 id="利用现成服务">利用现成服务</h3>
+<ul>
+<li>ZEGO</li>
+<li>声网</li>
+</ul>
+<h3 id="自行构建协议栈">自行构建协议栈</h3>
+<ul>
+<li>难点：需从头开始构建</li>
+</ul>
+<h3 id="参考项目">参考项目</h3>
+<ul>
+<li><a href="https://gitee.com/dingtalkrepo/webrtc_open">ohos_webrtc</a></li>
+<li><a href="https://gitee.com/dingtalkrepo/ohos_demo_open#https://gitee.com/dingtalkrepo/webrtc_open.git">RTCDemo</a></li>
+</ul>
+<p>第二个项目基于第一个项目</p>
+<h2 id="直播界面">直播界面</h2>
+<h3 id="Distributed-View-Show">Distributed-View-Show</h3>
+<p><a href="https://gitee.com/harmonyos_samples/distributed-view-show">直播界面</a></p>
+<p>对该开源项目的直播界面进行分析</p>
+<h3 id="直播数据">直播数据</h3>
+<ul>
+<li>实际LiveData非const</li>
+<li>当看播端通过滑动页面请求观看直播，服务器以某种算法（随机或根据观看人数排序）从LiveData中返回一个LiveDataModel，看播端根据它来渲染画面：显示主播、观看人数、评论，解析码流。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph TD</span><br><span class="line">    A[客户端滑动页面] --&gt; B[发送看播请求]</span><br><span class="line">    B --&gt; C[服务器处理请求]</span><br><span class="line">    C --&gt;|选择算法：随机/根据热度| D[发送LiveDataModel]</span><br><span class="line">    D --&gt; F[客户端渲染画面]</span><br><span class="line">    F --&gt; G[显示主播、观看人数、评论]</span><br><span class="line">    F --&gt; H[解析码流]</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>鸿蒙live开发</category>
+      </categories>
+      <tags>
+        <tag>实习</tag>
+        <tag>鸿蒙5</tag>
+        <tag>live</tag>
       </tags>
   </entry>
 </search>
